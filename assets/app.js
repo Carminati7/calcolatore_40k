@@ -1,23 +1,33 @@
 // Calcola il danno medio da input testuale (es. 2, 1-3, 1,2,3, D3)
 function calcolaDannoMedio(input) {
-    input = input.trim().toUpperCase();
+    input = input.trim().toUpperCase().replace(/\s+/g, '');
+    // Supporta espressioni tipo D6+2, 2+D3, D3+1, D3+D6, ecc.
+    // Split su +
+    if (input.includes('+')) {
+        const parts = input.split('+');
+        let sum = 0;
+        for (let part of parts) {
+            sum += calcolaDannoMedio(part);
+        }
+        return sum;
+    }
+    // Notazione Dn (es. D3)
     if (/^D(\d+)$/.test(input)) {
-        // Notazione Dn (es. D3)
         const n = parseInt(input.slice(1), 10);
         return (1 + n) / 2;
     }
+    // Numero singolo
     if (/^\d+$/.test(input)) {
-        // Numero singolo
         return parseInt(input, 10);
     }
+    // Intervallo (es. 1-3)
     if (/^(\d+)-(\d+)$/.test(input)) {
-        // Intervallo (es. 1-3)
         const [min, max] = input.split('-').map(Number);
         if (min > max) return min; // fallback
         return (min + max) / 2;
     }
+    // Lista separata da virgole (es. 1,2,3)
     if (/^\d+(,\d+)+$/.test(input)) {
-        // Lista separata da virgole (es. 1,2,3)
         const values = input.split(',').map(Number);
         return values.reduce((a, b) => a + b, 0) / values.length;
     }
