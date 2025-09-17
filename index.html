@@ -42,7 +42,7 @@
                     </div>
                     <div class="form-group">
                         <label for="danni">Danni <span style="font-weight:normal;font-size:0.9em">(es: 2, 1-3, 1,2,3, D3)</span></label>
-                        <input type="text" id="danni" name="danni" pattern="[0-9dD,\- ]+" maxlength="20" required placeholder="2 oppure 1-3 oppure D3">
+                        <input type="text" id="danni" name="danni" pattern="([0-9]+|[dD][0-9]+)([\-,+][0-9]+|[\-,+][dD][0-9]+|,[0-9]+|,[dD][0-9]+)*" maxlength="20" required placeholder="2, 1-3, D3, D6+2, 2+D3">
                     </div>
                 </form>
             </section>
