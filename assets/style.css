@@ -204,7 +204,8 @@ label {
     font-weight: 500;
 }
 
-input[type="number"] {
+input[type="number"],
+input[type="text"] {
     padding: 0.7rem;
     border: 1px solid #bbb;
     border-radius: 4px;
@@ -216,7 +217,8 @@ input[type="number"] {
     appearance: textfield;
 }
 @media (max-width: 600px) {
-    input[type="number"] {
+    input[type="number"],
+    input[type="text"] {
         max-width: 100%;
         font-size: 1.05rem;
     }
