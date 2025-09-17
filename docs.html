@@ -17,12 +17,13 @@
     <main>
         <section class="doc-section">
             <h2>Come usare il calcolatore</h2>
-            <p>Compila i dati della tua unità e del bersaglio, poi premi "Calcola" per ottenere una stima dei danni e dei modelli eliminati.</p>
+            <p>Compila i dati della tua unità e del bersaglio, poi premi "Calcola" per ottenere una stima dei danni e dei modelli eliminati.<br>
+            <strong>Campo Danni:</strong> puoi inserire un valore singolo (es. 2), un intervallo (es. 1-3), una lista (es. 1,2,3) o la notazione Dn (es. D3). Il calcolatore userà il valore medio risultante.</p>
         </section>
         <section class="doc-section">
             <h2>Formule utilizzate</h2>
             <ul>
-                <li><strong>Danni attesi:</strong> attacchi × probabilità di colpire × probabilità di ferire × probabilità di non salvezza × danni</li>
+                <li><strong>Danni attesi:</strong> attacchi × probabilità di colpire × probabilità di ferire × probabilità di non salvezza × <strong>danno medio</strong> (calcolato dal campo Danni)</li>
                 <li><strong>Modelli eliminati:</strong> la stima tiene conto che più attacchi a segno possono sommarsi per eliminare un modello con più ferite (no overkill: i danni in eccesso non si trasferiscono al modello successivo). Formula: danni attesi / ferite per modello</li>
                 <li><strong>Probabilità di eliminare tutti i modelli:</strong> stimata tramite distribuzione di Poisson sui danni attesi totali rispetto alle ferite totali dell'unità bersaglio</li>
             </ul>

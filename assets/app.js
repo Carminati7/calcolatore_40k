@@ -1,3 +1,28 @@
+// Calcola il danno medio da input testuale (es. 2, 1-3, 1,2,3, D3)
+function calcolaDannoMedio(input) {
+    input = input.trim().toUpperCase();
+    if (/^D(\d+)$/.test(input)) {
+        // Notazione Dn (es. D3)
+        const n = parseInt(input.slice(1), 10);
+        return (1 + n) / 2;
+    }
+    if (/^\d+$/.test(input)) {
+        // Numero singolo
+        return parseInt(input, 10);
+    }
+    if (/^(\d+)-(\d+)$/.test(input)) {
+        // Intervallo (es. 1-3)
+        const [min, max] = input.split('-').map(Number);
+        if (min > max) return min; // fallback
+        return (min + max) / 2;
+    }
+    if (/^\d+(,\d+)+$/.test(input)) {
+        // Lista separata da virgole (es. 1,2,3)
+        const values = input.split(',').map(Number);
+        return values.reduce((a, b) => a + b, 0) / values.length;
+    }
+    return 1; // fallback
+}
 
 
 // Utility: calcola il fattoriale di un numero intero non negativo
@@ -77,7 +102,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const forza = parseInt(form.forza.value, 10);
         const resistenza = parseInt(form.resistenza.value, 10);
         const penetrazione = parseInt(form.penetrazione.value, 10);
-        const danni = parseInt(form.danni.value, 10);
+        const danniInput = form.danni.value;
+        const danni = calcolaDannoMedio(danniInput);
         const salvezza = parseInt(form.salvezza.value, 10);
         const ferite = parseInt(form.ferite.value, 10);
         const modelliTotali = parseInt(form.modelli.value, 10);
