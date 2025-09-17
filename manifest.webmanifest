@@ -1,7 +1,7 @@
 {
   "name": "Calcolatore 40k",
   "short_name": "Calcolatore 40k",
-  "start_url": "index.html",
+  "start_url": "./calcolatore_40k/index.html",
   "scope": "./",
   "display": "minimal-ui",
   "background_color": "#222222",
