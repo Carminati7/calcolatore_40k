@@ -9,7 +9,9 @@ Questa è una web app statica pronta per il deploy su GitHub Pages.
 		- Layout a 3 colonne responsive:
 			- **Colonna 1 (La tua unità):**
 				- Numero di attacchi
-				- Balistic skill (es: 3 per 3+)
+				   - Balistic skill (es: 3 per 3+)
+				   - [ ] Permetti reroll di tutti i tiri falliti (checkbox, esclusiva)
+				   - [ ] Permetti reroll dei risultati 1 (checkbox, esclusiva)
 				- Forza
 				- Penetrazione armatura (AP)
 					- Danni (accetta valore singolo, intervallo es. 1-3, lista es. 1,2,3, notazione Dn es. D3, o formule come D6+2, 2+D3, D3+1)
@@ -24,7 +26,8 @@ Questa è una web app statica pronta per il deploy su GitHub Pages.
 - `assets/`: Cartella per immagini, stili CSS e JS
 	- `style.css`: Stili responsive mobile-first, adattivi anche su desktop
 		- `app.js`: Script JS che calcola il valore stimato dei danni inflitti in base ai dati inseriti:
-			   - Probabilità di colpire: (7 - Balistic skill) / 6
+				- Probabilità di colpire: (7 - Balistic skill) / 6
+				- Se attivi una delle due opzioni di reroll, la probabilità di colpire viene ricalcolata considerando il reroll selezionato. Le due opzioni sono mutualmente esclusive.
 			   - Probabilità di ferire: in base a Forza e Resistenza avversario (regole Warhammer)
 			   - Probabilità di salvezza: (7 - (Salvezza avversaria + Penetrazione)) / 6 (minimo 0)
 				- Danni: puoi inserire un valore singolo (es. 2), un intervallo (es. 1-3), una lista (es. 1,2,3), la notazione Dn (es. D3), oppure una formula (es. D6+2, 2+D3, D3+1). Il calcolatore userà il valore medio risultante della formula inserita.
