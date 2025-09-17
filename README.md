@@ -12,7 +12,7 @@ Questa è una web app statica pronta per il deploy su GitHub Pages.
 				- Balistic skill (es: 3 per 3+)
 				- Forza
 				- Penetrazione armatura (AP)
-				   - Danni (accetta valore singolo, intervallo es. 1-3, lista es. 1,2,3 o notazione Dn es. D3)
+					- Danni (accetta valore singolo, intervallo es. 1-3, lista es. 1,2,3, notazione Dn es. D3, o formule come D6+2, 2+D3, D3+1)
 				- Pulsante Calcola
 			- **Colonna 2 (Bersaglio):**
 				- Resistenza avversario
@@ -27,7 +27,7 @@ Questa è una web app statica pronta per il deploy su GitHub Pages.
 			   - Probabilità di colpire: (7 - Balistic skill) / 6
 			   - Probabilità di ferire: in base a Forza e Resistenza avversario (regole Warhammer)
 			   - Probabilità di salvezza: (7 - (Salvezza avversaria + Penetrazione)) / 6 (minimo 0)
-			   - Danni: puoi inserire un valore singolo (es. 2), un intervallo (es. 1-3), una lista (es. 1,2,3) o la notazione Dn (es. D3). Il calcolatore userà il valore medio risultante.
+				- Danni: puoi inserire un valore singolo (es. 2), un intervallo (es. 1-3), una lista (es. 1,2,3), la notazione Dn (es. D3), oppure una formula (es. D6+2, 2+D3, D3+1). Il calcolatore userà il valore medio risultante della formula inserita.
 			   - Valore atteso: attacchi × prob. colpire × prob. ferire × (1 - prob. salvezza) × danno medio
 			   - Modelli eliminati: danni attesi / ferite del bersaglio
 			   - Percentuale unità eliminata: modelli eliminati / numero di modelli inserito
