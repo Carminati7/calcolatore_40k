@@ -1,3 +1,21 @@
+/* Checkbox stile uniforme */
+.checkbox-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    margin-bottom: 0.2em;
+}
+.styled-checkbox {
+    width: 1.1em;
+    height: 1.1em;
+    accent-color: #222;
+    margin: 0;
+}
+.styled-checkbox-label {
+    font-weight: 400;
+    font-size: 1em;
+    cursor: pointer;
+}
 /* Barra di navigazione principale */
 .main-nav {
     display: flex;

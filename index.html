@@ -33,12 +33,14 @@
                         <input type="number" id="balistic" name="balistic" min="2" max="6" required>
                     </div>
                     <div class="form-group" style="margin-top:-0.7rem;">
-                        <div style="margin-top:0.2rem;">
-                            <input type="checkbox" id="rerollFail" name="rerollFail">
-                            <label for="rerollFail" style="font-weight:400;display:inline;">Permetti reroll di tutti i tiri falliti</label>
+                        <div class="checkbox-row">
+                            <input type="checkbox" id="rerollFail" name="rerollFail" class="styled-checkbox">
+                            <label for="rerollFail" class="styled-checkbox-label">Permetti reroll di tutti i tiri falliti</label>
                         </div>
-                        <input type="checkbox" id="reroll1" name="reroll1">
-                        <label for="reroll1" style="font-weight:400;display:inline;">Permetti reroll dei risultati 1</label>
+                        <div class="checkbox-row">
+                            <input type="checkbox" id="reroll1" name="reroll1" class="styled-checkbox">
+                            <label for="reroll1" class="styled-checkbox-label">Permetti reroll dei risultati 1</label>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="forza">Forza</label>
@@ -84,6 +86,17 @@
     </main>
         <script src="assets/app.js"></script>
         <script>
+            // Mutua esclusione tra le due checkbox reroll
+            document.addEventListener('DOMContentLoaded', function() {
+                var reroll1 = document.getElementById('reroll1');
+                var rerollFail = document.getElementById('rerollFail');
+                reroll1.addEventListener('change', function() {
+                    if (reroll1.checked) rerollFail.checked = false;
+                });
+                rerollFail.addEventListener('change', function() {
+                    if (rerollFail.checked) reroll1.checked = false;
+                });
+            });
             if ('serviceWorker' in navigator) {
                 window.addEventListener('load', function() {
                     // Path robusto per locale e GitHub Pages
