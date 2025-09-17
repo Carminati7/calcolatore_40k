@@ -99,15 +99,9 @@
             });
             if ('serviceWorker' in navigator) {
                 window.addEventListener('load', function() {
-                    // Use absolute path to match manifest scope on GitHub Pages
-                    // and avoid double-subfolder resolution when the app is installed.
-                    // For local testing you can switch to the dynamic path below.
-                    var swPath = '/calcolatore_40k/service-worker.js';
-                    // Fallback dynamic path for local dev (uncomment if needed):
-                    // var swPath = window.location.pathname.replace(/[^/]+$/, '') + 'service-worker.js';
-                    navigator.serviceWorker.register(swPath).catch(function(err){
-                        console.warn('Service worker registration failed:', err);
-                    });
+                    // Path robusto per locale e GitHub Pages
+                    var swPath = window.location.pathname.replace(/[^/]+$/, '') + 'service-worker.js';
+                    navigator.serviceWorker.register(swPath);
                 });
             }
         </script>
