@@ -34,6 +34,24 @@
                 <li><strong>Probabilità di eliminare tutti i modelli:</strong> stimata tramite distribuzione di Poisson sui danni attesi totali rispetto alle ferite totali dell'unità bersaglio</li>
             </ul>
         </section>
+        <section class="doc-section">
+            <h2>PWA: risoluzione problemi e reinstallazione</h2>
+            <p>Se hai installato l'app come PWA e noti che apre una pagina errata (es. l'app parte da <code>/</code> invece che da <code>/calcolatore_40k/</code>), probabilmente il manifest o il service worker vecchio è ancora in cache. Segui questi passi:</p>
+            <ol>
+                <li>Disinstalla l'app PWA dal desktop (rimuovi il collegamento/installazione).</li>
+                <li>Apri la pagina GitHub Pages: <code>https://carminati7.github.io/calcolatore_40k/</code>.</li>
+                <li>Apri DevTools (F12) → Scheda <strong>Application</strong>:
+                    <ul>
+                        <li>Service Workers: clicca <em>Unregister</em> per il service worker del sito.</li>
+                        <li>Storage / Clear site data: usa <em>Clear site data</em> per rimuovere cache e manifest memorizzati.</li>
+                        <li>Manifest: verifica che <code>start_url</code> sia <code>/calcolatore_40k/index.html</code> e <code>scope</code> sia <code>/calcolatore_40k/</code>.</li>
+                    </ul>
+                </li>
+                <li>Ricarica la pagina e reinstalla la PWA (usa l'icona <em>Install</em> nella barra degli indirizzi o il menu del browser → Install app).</li>
+                <li>Apri l'app dal desktop/collegamento ed esegui un controllo veloce: DevTools → Application (dentro la finestra dell'app installata) e conferma che <code>start_url</code> e <code>scope</code> sono corretti.</li>
+            </ol>
+            <p>Se dopo questi passi l'app continua ad aprirsi nella path errata, inviami il browser e la versione (es. Chrome 123 su Windows 11) e uno screenshot della scheda <strong>Application</strong> — controllerò il manifest e la registrazione del service worker.</p>
+        </section>
     </main>
 </body>
 </html>

@@ -47,3 +47,7 @@ L'app è progettata per essere **responsive**: utilizzabile su dispositivi mobil
 4. Salva e attendi la pubblicazione.
 
 L'app sarà disponibile all'indirizzo `https://<tuo-username>.github.io/<nome-repo>/`.
+
+## PWA e risoluzione problemi
+
+Se installi l'app come PWA e l'icona aprisse una path sbagliata (ad es. l'app parte da `/` invece che da `/calcolatore_40k/`), disinstalla l'app, apri la pagina pubblicata, vai in DevTools → Application, unregister il service worker e usa Clear site data, poi reinstalla la PWA. Verifica che il manifest esponga <code>start_url</code> e <code>scope</code> corretti.
