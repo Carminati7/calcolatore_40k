@@ -44,12 +44,19 @@ function fattoriale(n) {
 }
 
 // Calcola la probabilità di colpire in base alla balistic skill
-// Se reroll1 è true, considera il reroll dei risultati 1
-function calcolaProbColpire(balistic, reroll1 = false) {
+// reroll1: reroll dei risultati 1
+// rerollFail: reroll di tutti i falliti
+function calcolaProbColpire(balistic, reroll1 = false, rerollFail = false) {
     const base = (7 - balistic) / 6;
-    if (!reroll1) return base;
-    // Probabilità di colpire con reroll dei 1: base + (1/6) * base
-    return base + (1/6) * base;
+    if (rerollFail) {
+        // Probabilità di colpire con reroll di tutti i falliti: base + (1-base)*base
+        return base + (1 - base) * base;
+    }
+    if (reroll1) {
+        // Probabilità di colpire con reroll dei 1: base + (1/6) * base
+        return base + (1/6) * base;
+    }
+    return base;
 }
 
 // Calcola la probabilità di ferire in base a forza e resistenza
@@ -113,7 +120,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Raccolta dati e validazione
         const attacchi = parseInt(form.attacchi.value, 10);
         const balistic = parseInt(form.balistic.value, 10);
-        const reroll1 = form.reroll1 && form.reroll1.checked;
+    const reroll1 = form.reroll1 && form.reroll1.checked;
+    const rerollFail = form.rerollFail && form.rerollFail.checked;
         const forza = parseInt(form.forza.value, 10);
         const resistenza = parseInt(form.resistenza.value, 10);
         const penetrazione = parseInt(form.penetrazione.value, 10);
@@ -124,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const modelliTotali = parseInt(form.modelli.value, 10);
 
         // Calcoli di probabilità
-        const probColpire = calcolaProbColpire(balistic, reroll1);
+    const probColpire = calcolaProbColpire(balistic, reroll1, rerollFail);
         const probFerire = calcolaProbFerire(forza, resistenza);
         const probNonSalvato = calcolaProbNonSalvato(salvezza, penetrazione);
         const probColpoValido = probColpire * probFerire * probNonSalvato;
