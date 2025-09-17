@@ -77,7 +77,9 @@
         <script>
             if ('serviceWorker' in navigator) {
                 window.addEventListener('load', function() {
-                    navigator.serviceWorker.register('service-worker.js');
+                    // Path robusto per locale e GitHub Pages
+                    var swPath = window.location.pathname.replace(/[^/]+$/, '') + 'service-worker.js';
+                    navigator.serviceWorker.register(swPath);
                 });
             }
         </script>
