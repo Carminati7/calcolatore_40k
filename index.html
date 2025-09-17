@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calcolatore 40k</title>
     <link rel="stylesheet" href="assets/style.css">
-    <link rel="manifest" href="manifest.webmanifest">
+    <!-- Use absolute manifest URL so browsers fetch the correct manifest on GitHub Pages -->
+    <link rel="manifest" href="/calcolatore_40k/manifest.webmanifest">
     <meta name="theme-color" content="#222222">
     <link rel="icon" type="image/x-ico" sizes="192x192" href="assets/img/favicon.ico">
 </head>
@@ -99,9 +100,11 @@
             });
             if ('serviceWorker' in navigator) {
                 window.addEventListener('load', function() {
-                    // Path robusto per locale e GitHub Pages
-                    var swPath = window.location.pathname.replace(/[^/]+$/, '') + 'service-worker.js';
-                    navigator.serviceWorker.register(swPath);
+                    // Register service worker with absolute path so the SW scope matches manifest scope on GitHub Pages
+                    var swPath = '/calcolatore_40k/service-worker.js';
+                    navigator.serviceWorker.register(swPath).catch(function(err){
+                        console.warn('SW registration failed:', err);
+                    });
                 });
             }
         </script>
