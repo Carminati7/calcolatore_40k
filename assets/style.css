@@ -1,3 +1,100 @@
+/* Barra di navigazione principale */
+.main-nav {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    background: #222;
+    padding: 0.5rem 1rem;
+    border-radius: 8px 8px 0 0;
+    margin-bottom: 0.5rem;
+}
+.main-nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.3rem 0.7rem;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+.main-nav a.active, .main-nav a:hover {
+    background: #444;
+}
+/* Small screens: max 600px */
+@media (max-width: 600px) {
+    .main-nav {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-start;
+    }
+    .card-3col {
+        border-radius: 0;
+        box-shadow: none;
+        border: none;
+    }
+    .col {
+        padding: 1rem 0.5rem;
+    }
+    input[type="number"] {
+        font-size: 1.05rem;
+    }
+    button[type="submit"] {
+        font-size: 1rem;
+        padding: 0.8rem;
+    }
+}
+
+/* Medium screens: 601px - 1024px */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .card-3col {
+        max-width: 800px;
+    }
+    .col {
+        padding: 1.2rem 1rem;
+    }
+    input[type="number"] {
+        font-size: 1.08rem;
+    }
+    button[type="submit"] {
+        font-size: 1.05rem;
+        padding: 0.9rem;
+    }
+}
+
+/* Large screens: >1024px */
+@media (min-width: 1025px) {
+    .card-3col {
+        flex-direction: row;
+        max-width: 1100px;
+    }
+    .col {
+        min-width: 220px;
+        max-width: 350px;
+        border-radius: 0;
+        border-bottom: none;
+        border-right: 1px solid #eee;
+        padding: 1.2rem 1.5rem;
+    }
+    .col:last-child {
+        border-right: none;
+    }
+    .col-result {
+        max-width: 300px;
+    }
+    .divider {
+        display: block;
+        width: 1px;
+        height: auto;
+        background: #eee;
+        margin: 0;
+    }
+    input[type="number"] {
+        font-size: 1.1rem;
+    }
+    button[type="submit"] {
+        font-size: 1.1rem;
+        padding: 1rem;
+    }
+}
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -33,12 +130,17 @@ main {
     margin: 0 auto;
     max-width: 100%;
     overflow: hidden;
+    border: 1px solid #e0e0e0;
 }
 
 .col {
-    padding: 1.2rem 1rem;
+    padding: 1.2rem 0.7rem;
     flex: 1 1 0;
-    min-width: 220px;
+    min-width: 0;
+    border-bottom: 1px solid #eee;
+}
+.col:last-child {
+    border-bottom: none;
 }
 
 .col h2 {
@@ -51,10 +153,11 @@ main {
 }
 
 .divider {
-    display: none;
+    display: block;
     width: 100%;
     height: 1px;
     background: #eee;
+    margin: 0;
 }
 
 @media (min-width: 900px) {
@@ -66,6 +169,12 @@ main {
         min-width: 220px;
         max-width: 350px;
         border-radius: 0;
+        border-bottom: none;
+        border-right: 1px solid #eee;
+        padding: 1.2rem 1.5rem;
+    }
+    .col:last-child {
+        border-right: none;
     }
     .col-result {
         max-width: 300px;
@@ -96,10 +205,26 @@ label {
 }
 
 input[type="number"] {
-    padding: 0.5rem;
+    padding: 0.7rem;
     border: 1px solid #bbb;
     border-radius: 4px;
-    font-size: 1rem;
+    font-size: 1.1rem;
+    background: #fafbfc;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: right;
+    appearance: textfield;
+}
+@media (max-width: 600px) {
+    input[type="number"] {
+        max-width: 100%;
+        font-size: 1.05rem;
+    }
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 button[type="submit"] {
@@ -107,10 +232,14 @@ button[type="submit"] {
     color: #fff;
     border: none;
     border-radius: 4px;
-    padding: 0.7rem;
-    font-size: 1rem;
+    padding: 1rem;
+    font-size: 1.1rem;
     cursor: pointer;
     transition: background 0.2s;
+    width: 100%;
+    margin-top: 1.2rem;
+    margin-bottom: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
 }
 button[type="submit"]:hover {
     background: #444;
@@ -118,9 +247,10 @@ button[type="submit"]:hover {
 
 #risultato {
     min-height: 2rem;
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     text-align: center;
-    margin-top: 0.5rem;
+    margin-top: 0.7rem;
+    word-break: break-word;
 }
 
 @media (min-width: 900px) {

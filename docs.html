@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentazione Calcolatore 40k</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <a href="index.html">Calcolatore</a>
+            <a href="docs.html" class="active">Documentazione</a>
+        </nav>
+        <h1>Documentazione</h1>
+    </header>
+    <main>
+        <section class="doc-section">
+            <h2>Come usare il calcolatore</h2>
+            <p>Compila i dati della tua unità e del bersaglio, poi premi "Calcola" per ottenere una stima dei danni e dei modelli eliminati.</p>
+        </section>
+        <section class="doc-section">
+            <h2>Formule utilizzate</h2>
+            <ul>
+                <li><strong>Danni attesi:</strong> attacchi × probabilità di colpire × probabilità di ferire × probabilità di non salvezza × danni</li>
+                <li><strong>Modelli eliminati:</strong> la stima tiene conto che più attacchi a segno possono sommarsi per eliminare un modello con più ferite (no overkill: i danni in eccesso non si trasferiscono al modello successivo). Formula: danni attesi / ferite per modello</li>
+                <li><strong>Probabilità di eliminare tutti i modelli:</strong> stimata tramite distribuzione di Poisson sui danni attesi totali rispetto alle ferite totali dell'unità bersaglio</li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>
