@@ -5,6 +5,34 @@
     gap: 0.5em;
     margin-bottom: 0.2em;
 }
+
+/* Changelog / diario di bordo styles */
+.log {
+    max-width: 900px;
+    margin: 1.2rem auto;
+    padding: 1rem 1.2rem;
+}
+.log h2 {
+    font-family: 'Georgia', serif;
+    color: #1f2937;
+    margin-top: 1rem;
+}
+.lede {
+    font-style: italic;
+    opacity: 0.9;
+}
+.commit-list {
+    padding-left: 1rem;
+}
+.commit-list li {
+    margin: 0.4rem 0;
+    font-family: 'Courier New', monospace;
+    font-size: 0.95rem;
+}
+.muted {
+    color: #666;
+    font-size: 0.95rem;
+}
 .styled-checkbox {
     width: 1.1em;
     height: 1.1em;
