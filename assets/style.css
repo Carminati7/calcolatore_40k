@@ -62,6 +62,22 @@ details summary {
 .md-diary h2 { font-family: 'Georgia', serif; }
 .md-block { background: #f8f9f9; padding: 0.6rem; border-radius: 4px; overflow:auto; }
 .transcript-integral { max-height: 50vh; overflow:auto; background:#0f1724; color:#e6eef8; padding:0.8rem; border-radius:6px; }
+
+/* Side box: scrollable, max width 50vw and height 50vh */
+.side-box {
+    max-width: 50vw;
+    margin: 0.8rem auto;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.side-box h3 { margin: 0.6rem 0 0.2rem 0; padding: 0 0.8rem; font-family: 'Georgia', serif; }
+.side-box-content { max-height: 50vh; overflow: auto; padding: 0.8rem; }
+
+@media (max-width: 800px) {
+    .side-box { max-width: 95vw; }
+}
 .styled-checkbox {
     width: 1.1em;
     height: 1.1em;
