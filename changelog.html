@@ -9,7 +9,8 @@
 </head>
 <body>
   <header>
-    <nav class="main-nav">
+    <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav">☰ Menu</button>
+    <nav id="main-nav" class="main-nav">
       <a href="index.html">Calcolatore</a>
       <a href="docs.html">Documentazione</a>
       <a href="changelog.html" class="active">Diario di bordo</a>
@@ -84,4 +85,6 @@
     <p class="muted">Se vuoi, posso estendere questo diario con timestamp precisi per ogni commit e link ai rispettivi diff.</p>
   </footer>
 </body>
+<script src="assets/nav.js"></script>
+</html>
 </html>

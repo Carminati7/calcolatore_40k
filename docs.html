@@ -9,7 +9,8 @@
 </head>
 <body>
     <header>
-        <nav class="main-nav">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav">☰ Menu</button>
+        <nav id="main-nav" class="main-nav">
             <a href="index.html">Calcolatore</a>
             <a href="docs.html" class="active">Documentazione</a>
             <a href="changelog.html">Diario di bordo</a>
@@ -55,5 +56,7 @@
             <p>Se dopo questi passi l'app continua ad aprirsi nella path errata, inviami il browser e la versione (es. Chrome 123 su Windows 11) e uno screenshot della scheda <strong>Application</strong> — controllerò il manifest e la registrazione del service worker.</p>
         </section>
     </main>
-</body>
+    </main>
+        <script src="assets/nav.js"></script>
+    </body>
 </html>

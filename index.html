@@ -15,7 +15,8 @@
 
 <body>
     <header>
-        <nav class="main-nav">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav">☰ Menu</button>
+        <nav id="main-nav" class="main-nav">
             <a href="index.html" class="active">Calcolatore</a>
             <a href="docs.html">Documentazione</a>
             <a href="changelog.html">Diario di bordo</a>
@@ -88,6 +89,7 @@
         </div>
     </main>
         <script src="assets/app.js"></script>
+    <script src="assets/nav.js"></script>
         <script>
             // Mutua esclusione tra le due checkbox reroll
             document.addEventListener('DOMContentLoaded', function() {

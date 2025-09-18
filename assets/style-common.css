@@ -44,6 +44,26 @@ main { min-height: 70vh; padding: 1.5rem; display: flex; flex-direction: column;
 .main-nav a { color: var(--surface); text-decoration:none; font-weight:600; padding:0.45rem 0.9rem; border-radius:8px; transition: all 0.18s ease; }
 .main-nav a.active, .main-nav a:hover { background: linear-gradient(90deg,var(--accent),var(--accent-2)); color: #fff; transform: translateY(-1px); box-shadow: 0 6px 18px rgba(37,99,235,0.12); }
 
+/* Mobile nav toggle button */
+.nav-toggle {
+  display:none;
+  background: linear-gradient(90deg,var(--accent),var(--accent-2));
+  color:#fff;
+  border:none;
+  padding:0.45rem 0.9rem;
+  border-radius:8px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+/* Mobile: hide nav and show toggle */
+@media (max-width: 700px) {
+  .nav-toggle { display:inline-block; margin-bottom:0.5rem; }
+  .main-nav { display:block; max-height:0; overflow:hidden; transition: max-height 0.22s ease; }
+  .main-nav.open { max-height: 400px; }
+  .main-nav a { display:block; padding:0.8rem 1rem; border-radius:6px; margin:0.25rem 0; }
+}
+
 /* Form controls (base) */
 label { font-weight: 500; }
 input[type="number"], input[type="text"] { padding: 0.7rem; border: 1px solid #bbb; border-radius: 4px; font-size: 1.1rem; background: #fafbfc; width: 100%; box-sizing: border-box; text-align: right; }
