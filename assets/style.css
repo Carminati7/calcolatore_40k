@@ -33,6 +33,22 @@
     color: #666;
     font-size: 0.95rem;
 }
+
+/* Transcript block: collapsible and scrollable up to 50% viewport height */
+.transcript {
+    max-height: 50vh;
+    overflow: auto;
+    background: #fffef8;
+    border: 1px solid #e6e2d3;
+    padding: 0.8rem;
+    margin-top: 0.6rem;
+    white-space: pre-wrap;
+}
+details summary {
+    cursor: pointer;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+}
 .styled-checkbox {
     width: 1.1em;
     height: 1.1em;

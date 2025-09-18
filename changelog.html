@@ -19,46 +19,23 @@
   <main>
     <article class="log">
       <section>
+        <h2>Conversazione completa</h2>
+        <details>
+          <summary>Mostra / Nascondi conversazione completa</summary>
+          <div class="transcript">
+<pre>
+      <section>
         <h2>2025-09-19 — Consolidamento PWA e asset</h2>
         <ul>
-          <li>Aggiornato <code>manifest.webmanifest</code> per usare <code>start_url</code> = <code>/calcolatore_40k/index.html</code> e <code>scope</code> = <code>/calcolatore_40k/</code> (per compatibilità con GitHub Pages).</li>
-          <li>Risolti i percorsi delle icone del manifest (ora riferimenti assoluti <code>/calcolatore_40k/assets/...</code>).</li>
-          <li>Aggiornato <code>index.html</code> per linkare il manifest con percorso assoluto e registrare il service worker con percorso assoluto <code>/calcolatore_40k/service-worker.js</code> per allineare scope e manifest.</li>
-        </ul>
-      </section>
-      <section>
-        <h2>Prompt &amp; Risposte (sintesi)</h2>
         <ol class="commit-list">
           <li><strong>Utente:</strong> "Voglio costruire un app web utilizzabile da git page. iniziamo a fare lo scaffolding" — <strong>Assistente:</strong> Ho creato lo scaffolding base (index, assets, manifest, SW, README, docs).</li>
-          <li><strong>Utente:</strong> "Impostati in maniera che tutte le richieste future di implementazione grafica siano responsive" — <strong>Assistente:</strong> Applicato design mobile-first e breakpoints small/medium/large.</li>
-          <li><strong>Utente:</strong> "Implementa calcolatore con attacchi, BS, Forza, AP, danni..." — <strong>Assistente:</strong> Implementato `assets/app.js` con parsing danni (numeri, range, liste, Dn, formule), probabilità e stime (no overkill, Poisson).</li>
-          <li><strong>Utente:</strong> "Aggiungi supporto per reroll" — <strong>Assistente:</strong> Aggiunte due checkbox mutualmente esclusive e logica di reroll (ones / all fails).</li>
-          <li><strong>Utente:</strong> "Rendi PWA e rendila testabile" — <strong>Assistente:</strong> Creato `manifest.webmanifest` e `service-worker.js`, aggiunte icone e registration script; iterato su start_url/scope per GitHub Pages.</li>
-          <li><strong>Utente:</strong> "La pwa non parte correttamente da /calcolatore_40k/ ma da root" — <strong>Assistente:</strong> Diagnosticato e cambiati percorsi in `manifest.webmanifest` e `index.html` a percorsi assoluti; aggiunta guida per reinstallazione PWA e unregister SW.</li>
           <li><strong>Utente:</strong> "Aggiungi changelog" — <strong>Assistente:</strong> Creato questa pagina `changelog.html` e aggiunto anche stile dedicato.</li>
         </ol>
-      </section>
-      <section>
-        <h2>Storico commit (ultimo snapshot)</h2>
-        <ol class="commit-list">
-          <li><strong>b551482</strong> — 2025-09-19 00:54:32 — docs(changelog): add diario di bordo con changelog e note tecniche</li>
-          <li><strong>629c241</strong> — 2025-09-18 01:28:18 — fix(pwa): use absolute manifest and asset paths; register SW with absolute path for GitHub Pages</li>
           <li><strong>c4db297</strong> — 2025-09-18 01:23:12 — chore(site): apply manual edits to index.html (restore dynamic swPath)</li>
           <li><strong>71aa05e</strong> — 2025-09-18 01:19:04 — fix(pwa): register service worker with absolute path matching manifest scope</li>
-          <li><strong>e338cd7</strong> — 2025-09-18 01:15:59 — docs(pwa): add reinstall and troubleshooting guide for manifest/service worker</li>
-          <li><strong>b906088</strong> — 2025-09-18 00:58:50 — fix(manifest): modifiche manuali a manifest.webmanifest</li>
-          <li><strong>23ba160</strong> — 2025-09-18 00:57:25 — fix(pwa): scope e start_url coerenti per eliminare errore di ambito</li>
-          <li><strong>360d474</strong> — 2025-09-18 00:55:53 — fix(pwa): start_url corretto per avvio PWA su GitHub Pages</li>
-          <li><strong>4cd3a1c</strong> — 2025-09-18 00:54:28 — fix(manifest): modifiche manuali a manifest.webmanifest</li>
-          <li><strong>707449d</strong> — 2025-09-18 00:53:57 — fix(manifest): modifiche manuali a manifest.webmanifest</li>
           <li><strong>...</strong> — altri commit precedenti (vedi git log per la storia completa)</li>
         </ol>
-      </section>
       <section>
-        <h2>2025-09-19 — Documentazione e istruzioni PWA</h2>
-        <ul>
-          <li>Aggiunta alla documentazione: guida rapida per disinstallare e reinstallare la PWA, cancellare i dati del sito e verificare manifest e service worker in DevTools.</li>
-          <li>Aggiornato <code>README.md</code> con una nota PWA che descrive il comportamento e i passaggi per la risoluzione dei problemi.</li>
         </ul>
       </section>
       <section>
