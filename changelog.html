@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="it">
-<head>
+  <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Diario di bordo — Changelog</title>
-  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/style-common.css">
+  <link rel="stylesheet" href="assets/style-changelog.css">
 </head>
 <body>
   <header>
@@ -17,20 +18,14 @@
     <p class="lede">Registro cronologico delle modifiche e note tecniche — stile diario di bordo.</p>
   </header>
   <main>
-    <article class="log">
-          <!-- Scrollable side box requested by user -->
-          <div class="side-box">
-            <h3>Riquadro rapido</h3>
-            <div class="side-box-content">
-              <!-- spazio predisposto per lo storico integrale (scrollabile) -->
-              <p>Qui puoi incollare o caricare lo storico integrale della chat. Questo riquadro è limitato a 50vw di larghezza e 50vh di altezza e permette lo scroll interno.</p>
-            </div>
-          </div>
+  <article class="log article-inner">
+      <details open>
+        <summary>Version 1 - 8 ore di lavoro - tag v1.0.0</summary>
+        <div class="version-entry">
           <h2>### 2025-09-19 — Consolidamento PWA e asset</h2>
           <p>- Aggiornato <code>manifest.webmanifest</code> per usare <code>start_url</code> = <code>/calcolatore_40k/index.html</code> e <code>scope</code> = <code>/calcolatore_40k/</code> (compatibilità GitHub Pages).</p>
           <p>- Risolti i percorsi delle icone del manifest (ora riferimenti assoluti <code>/calcolatore_40k/assets/...</code>).</p>
           <p>- Aggiornato <code>index.html</code> per linkare il manifest con percorso assoluto e registrare il service worker con percorso assoluto <code>/calcolatore_40k/service-worker.js</code>.</p>
-          </ul>
       <section>
         <h2>2025-09-19 — Consolidamento PWA e asset</h2>
           <h2>### Storico commit (ultimo snapshot)</h2>

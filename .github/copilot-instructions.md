@@ -1,5 +1,7 @@
 ## Regola aggiuntiva per i breakpoint
 - Tutto lo stile deve essere suddiviso in breakpoint per schermi small (max 600px), medium (601-1024px) e large (>1024px), seguendo le best practice responsive.
+## Regola per i commit e push
+- Durante la soluzione di un prompt non eseguire mai il push automatico delle modifiche. Esegui solo commit locali automatici, le push le puoi eseguire solamente quando il prompt lo richiede esplicitamente.
 ## Regola aggiuntiva per lo stile del codice
 - Tutto il codice deve essere scritto come farebbe un programmatore esperto, seguendo le best practice attuali di leggibilità, manutenibilità e chiarezza. Utilizzare nomi descrittivi, suddividere in funzioni dove opportuno, evitare duplicazioni e commentare i passaggi complessi.
 <!-- Use this file to provide workspace-specific custom instructions to Copilot. For more details, visit https://code.visualstudio.com/docs/copilot/copilot-customization#_use-a-githubcopilotinstructionsmd-file -->

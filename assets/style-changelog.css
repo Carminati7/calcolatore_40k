@@ -1,0 +1,17 @@
+/* Styles specific to changelog.html */
+.log { max-width:900px; margin:1.2rem auto; padding:1rem 1.2rem; }
+.log.article-inner { background:#ffffff; border-radius:10px; box-shadow:0 6px 20px rgba(15,23,42,0.04); padding:1rem 1.25rem; }
+.log h2 { font-family: 'Georgia', serif; color:#1f2937; margin-top:1rem; }
+.version-entry { padding:0.6rem 0.25rem 0.8rem 0.25rem; }
+.md-block { background:#f6f7fb; padding:0.8rem; border-radius:6px; overflow:auto; }
+.transcript { max-height:50vh; overflow:auto; background:#fffef8; border:1px solid #e6e2d3; padding:0.8rem; margin-top:0.6rem; white-space:pre-wrap; }
+
+details { background: linear-gradient(180deg,#ffffff 0%,#fbfbfd 100%); border:1px solid #e6e6ef; border-radius:8px; padding:0.6rem; margin:0.8rem 0; }
+details[open] { box-shadow:0 8px 30px rgba(2,6,23,0.06); }
+details summary { list-style:none; outline:none; display:flex; align-items:center; gap:0.6rem; padding:0.5rem 0.6rem; border-radius:6px; -webkit-tap-highlight-color: rgba(0,0,0,0.05); }
+details summary::-webkit-details-marker{ display:none; }
+details summary::before { content: '\25B6'; display:inline-block; transform:rotate(0deg); transition:transform 0.18s ease; color:#0f1724; font-size:0.78rem; }
+details[open] summary::before { transform:rotate(90deg); }
+
+/* Responsive adjustments */
+@media (max-width:600px) { .log { padding:0.6rem; } .log.article-inner { padding:0.6rem; margin:0.4rem; } pre.md-block, code, pre { white-space:pre-wrap; word-wrap:break-word; hyphens:auto; font-family:'Courier New', monospace; font-size:0.95rem; } }
