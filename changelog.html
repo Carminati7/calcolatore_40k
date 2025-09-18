@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Diario di bordo — Changelog</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header>
+    <nav class="main-nav">
+      <a href="index.html">Calcolatore</a>
+      <a href="docs.html">Documentazione</a>
+      <a href="changelog.html" class="active">Diario di bordo</a>
+    </nav>
+    <h1>Diario di bordo</h1>
+    <p class="lede">Registro cronologico delle modifiche e note tecniche — stile diario di bordo.</p>
+  </header>
+  <main>
+    <article class="log">
+      <section>
+        <h2>2025-09-19 — Consolidamento PWA e asset</h2>
+        <ul>
+          <li>Aggiornato <code>manifest.webmanifest</code> per usare <code>start_url</code> = <code>/calcolatore_40k/index.html</code> e <code>scope</code> = <code>/calcolatore_40k/</code> (per compatibilità con GitHub Pages).</li>
+          <li>Risolti i percorsi delle icone del manifest (ora riferimenti assoluti <code>/calcolatore_40k/assets/...</code>).</li>
+          <li>Aggiornato <code>index.html</code> per linkare il manifest con percorso assoluto e registrare il service worker con percorso assoluto <code>/calcolatore_40k/service-worker.js</code> per allineare scope e manifest.</li>
+        </ul>
+      </section>
+      <section>
+        <h2>2025-09-19 — Documentazione e istruzioni PWA</h2>
+        <ul>
+          <li>Aggiunta alla documentazione: guida rapida per disinstallare e reinstallare la PWA, cancellare i dati del sito e verificare manifest e service worker in DevTools.</li>
+          <li>Aggiornato <code>README.md</code> con una nota PWA che descrive il comportamento e i passaggi per la risoluzione dei problemi.</li>
+        </ul>
+      </section>
+      <section>
+        <h2>2025-09-19 — Modifiche al registro locale</h2>
+        <ul>
+          <li>Registrazione dinamica del service worker (fallback) e log degli errori in caso di fallimento.</li>
+          <li>Commit con messaggi seguendo la convenzione conventional commits per tracking più chiaro.</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Funzionalità del calcolatore (sintesi)</h2>
+        <ul>
+          <li>Interfaccia responsive a tre colonne con card unica e divisori verticali.</li>
+          <li>Input per attacchi, Balistic Skill (BS), Forza, AP, Danni (campo testuale: numeri, intervalli, liste, notazione Dn e formule come D6+2), Resistenza, Salvezza, Ferite e Modelli.</li>
+          <li>Opzioni reroll: <em>reroll di tutti i tiri falliti</em> e <em>reroll dei risultati 1</em> (mutualmente esclusive).</li>
+          <li>Logica di calcolo: probabilità di colpire (con gestione reroll), probabilità di ferire, probabilità di non salvezza, danno medio da espressione, stima dei danni attesi, stima dei modelli eliminati (no-overkill), e probabilità di eliminare tutta l'unità (Poisson approximation).</li>
+        </ul>
+      </section>
+      <section>
+        <h2>File chiave</h2>
+        <ul>
+          <li><code>index.html</code> — interfaccia e registrazione service worker</li>
+          <li><code>assets/app.js</code> — motore di calcolo (parsing danno, probabilità, stime)</li>
+          <li><code>assets/style.css</code> — stili responsive e checkbox personalizzate</li>
+          <li><code>manifest.webmanifest</code> — metadata PWA</li>
+          <li><code>service-worker.js</code> — caching e offline support</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Note tecniche e decisioni</h2>
+        <ul>
+          <li>Ho preferito percorsi assoluti nel manifest e nell'HTML per evitare ambiguità sulla risoluzione degli URL quando il sito è servito da una sottocartella su GitHub Pages.</li>
+          <li>La registrazione dinamica del service worker è stata mantenuta come fallback per ambienti locali, ma la versione pubblicata usa percorsi assoluti per coerenza.</li>
+          <li>Il calcolatore usa valori medi per le espressioni di danno; non esegue simulazioni Monte Carlo, ma fornisce stime attese e una probabilità approssimata per il wipe totale.</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Commit note</h2>
+        <ul>
+          <li>La cronologia dei commit segue conventional commits: <code>feat(...)</code>, <code>fix(...)</code>, <code>docs(...)</code>, <code>chore(...)</code>.</li>
+          <li>Messaggi recenti: <em>fix(pwa): use absolute manifest and asset paths; register SW with absolute path for GitHub Pages</em>, <em>docs(pwa): add reinstall and troubleshooting guide for manifest/service worker</em>, <em>chore(site): apply manual edits to index.html (restore dynamic swPath)</em>.</li>
+      </section>
+    </article>
+  </main>
+  <footer>
+    <p class="muted">Se vuoi, posso estendere questo diario con timestamp precisi per ogni commit e link ai rispettivi diff.</p>
+  </footer>
+</body>
+</html>
