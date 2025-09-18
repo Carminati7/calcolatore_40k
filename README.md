@@ -40,6 +40,11 @@ Questa è una web app statica pronta per il deploy su GitHub Pages.
 ## Responsive Design
 L'app è progettata per essere **responsive**: utilizzabile su dispositivi mobili e desktop, con layout adattivo e mobile-friendly.
 
+## Release
+
+- Versione corrente: **v1.0.0**
+- Leggi il changelog dettagliato: `CHANGELOG.md` (file nella root del repository)
+
 ## Deploy su GitHub Pages
 1. Fai il push di tutti i file su un repository GitHub.
 2. Vai su "Settings" > "Pages" nel repository.
