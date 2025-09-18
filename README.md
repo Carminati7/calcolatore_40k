@@ -51,3 +51,17 @@ L'app sarà disponibile all'indirizzo `https://<tuo-username>.github.io/<nome-re
 ## PWA e risoluzione problemi
 
 Se installi l'app come PWA e l'icona aprisse una path sbagliata (ad es. l'app parte da `/` invece che da `/calcolatore_40k/`), disinstalla l'app, apri la pagina pubblicata, vai in DevTools → Application, unregister il service worker e usa Clear site data, poi reinstalla la PWA. Verifica che il manifest esponga <code>start_url</code> e <code>scope</code> corretti.
+
+## Autocommit watcher (opzionale)
+
+Se vuoi che le modifiche locali vengano automaticamente aggiunte e committate (ma senza essere pushate), puoi usare lo script PowerShell incluso:
+
+- `scripts/autocommit.ps1`: osserva il repository, raggruppa le modifiche rapide e crea commit automatici con messaggi tipo `autosave: ... @ timestamp`.
+- Per avviarlo: apri PowerShell nella root del progetto e esegui:
+
+```powershell
+.\scripts\autocommit.ps1
+```
+
+- Nota: lo script non esegue la `git push`; rimane necessario eseguire `git push` manualmente quando vuoi pubblicare i commit.
+- Se usi VS Code, è disponibile un task (Tasks → Run Task → Autocommit Watcher) che avvia lo script.
