@@ -12,6 +12,13 @@ document.addEventListener('DOMContentLoaded', function () {
       if (nav) {
         nav.classList.toggle('open');
         nav.setAttribute('aria-hidden', String(expanded));
+        if (nav.classList.contains('open')) {
+          // move focus to first link for accessibility
+          var firstLink = nav.querySelector('a');
+          if (firstLink) firstLink.focus();
+        } else {
+          btn.focus();
+        }
       }
       e.stopPropagation();
     });
@@ -20,11 +27,12 @@ document.addEventListener('DOMContentLoaded', function () {
     if (nav) {
       nav.addEventListener('click', function(ev){
         var tgt = ev.target.closest('a');
-        if (tgt && window.innerWidth <= 900) {
+        if (tgt && window.matchMedia('(max-width: 700px)').matches) {
           // close
           nav.classList.remove('open');
           nav.setAttribute('aria-hidden', 'true');
           btn.setAttribute('aria-expanded', 'false');
+          btn.focus();
         }
       });
     }
@@ -38,7 +46,10 @@ document.addEventListener('DOMContentLoaded', function () {
       if (openNav) {
         openNav.classList.remove('open');
         openNav.setAttribute('aria-hidden', 'true');
-        if (toggle) toggle.setAttribute('aria-expanded', 'false');
+        if (toggle) {
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.focus();
+        }
       }
     }
   });
@@ -51,7 +62,10 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!isClickInside) {
       openNav.classList.remove('open');
       openNav.setAttribute('aria-hidden', 'true');
-      if (toggle) toggle.setAttribute('aria-expanded', 'false');
+      if (toggle) {
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.focus();
+      }
     }
   });
 });
