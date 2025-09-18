@@ -27,6 +27,18 @@
         </ul>
       </section>
       <section>
+        <h2>Prompt &amp; Risposte (sintesi)</h2>
+        <ol class="commit-list">
+          <li><strong>Utente:</strong> "Voglio costruire un app web utilizzabile da git page. iniziamo a fare lo scaffolding" — <strong>Assistente:</strong> Ho creato lo scaffolding base (index, assets, manifest, SW, README, docs).</li>
+          <li><strong>Utente:</strong> "Impostati in maniera che tutte le richieste future di implementazione grafica siano responsive" — <strong>Assistente:</strong> Applicato design mobile-first e breakpoints small/medium/large.</li>
+          <li><strong>Utente:</strong> "Implementa calcolatore con attacchi, BS, Forza, AP, danni..." — <strong>Assistente:</strong> Implementato `assets/app.js` con parsing danni (numeri, range, liste, Dn, formule), probabilità e stime (no overkill, Poisson).</li>
+          <li><strong>Utente:</strong> "Aggiungi supporto per reroll" — <strong>Assistente:</strong> Aggiunte due checkbox mutualmente esclusive e logica di reroll (ones / all fails).</li>
+          <li><strong>Utente:</strong> "Rendi PWA e rendila testabile" — <strong>Assistente:</strong> Creato `manifest.webmanifest` e `service-worker.js`, aggiunte icone e registration script; iterato su start_url/scope per GitHub Pages.</li>
+          <li><strong>Utente:</strong> "La pwa non parte correttamente da /calcolatore_40k/ ma da root" — <strong>Assistente:</strong> Diagnosticato e cambiati percorsi in `manifest.webmanifest` e `index.html` a percorsi assoluti; aggiunta guida per reinstallazione PWA e unregister SW.</li>
+          <li><strong>Utente:</strong> "Aggiungi changelog" — <strong>Assistente:</strong> Creato questa pagina `changelog.html` e aggiunto anche stile dedicato.</li>
+        </ol>
+      </section>
+      <section>
         <h2>Storico commit (ultimo snapshot)</h2>
         <ol class="commit-list">
           <li><strong>b551482</strong> — 2025-09-19 00:54:32 — docs(changelog): add diario di bordo con changelog e note tecniche</li>
