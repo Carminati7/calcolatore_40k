@@ -1,5 +1,5 @@
 /* Styles specific to docs.html */
-.doc-section { max-width:900px; margin:1rem auto; background:#fff; padding:1.2rem; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
-.doc-section h2 { font-family: 'Georgia', serif; color:#1f2937; }
+.doc-section { max-width:920px; margin:1rem auto; background:var(--card); padding:1.25rem; border-radius: calc(var(--radius) - 4px); box-shadow:0 18px 40px rgba(2,6,23,0.06); }
+.doc-section h2 { font-family: 'Lora', serif; color:var(--surface); }
 .doc-section ul, .doc-section ol { margin-left:1rem; }
-.doc-section code { background:#f3f4f6; padding:0.15rem 0.35rem; border-radius:4px; font-family: 'Courier New', monospace; }
+.doc-section code { background: linear-gradient(90deg,#f3f6ff,#f7fbff); padding:0.2rem 0.45rem; border-radius:6px; font-family: 'Courier New', monospace; }
