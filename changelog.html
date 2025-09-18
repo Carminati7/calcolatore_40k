@@ -18,39 +18,36 @@
   </header>
   <main>
     <article class="log">
-      <section>
-        <h2>Conversazione completa</h2>
-        <details>
-          <summary>Mostra / Nascondi conversazione completa</summary>
-          <div class="transcript">
-<pre>
+          <h2>### 2025-09-19 — Consolidamento PWA e asset</h2>
+          <p>- Aggiornato <code>manifest.webmanifest</code> per usare <code>start_url</code> = <code>/calcolatore_40k/index.html</code> e <code>scope</code> = <code>/calcolatore_40k/</code> (compatibilità GitHub Pages).</p>
+          <p>- Risolti i percorsi delle icone del manifest (ora riferimenti assoluti <code>/calcolatore_40k/assets/...</code>).</p>
+          <p>- Aggiornato <code>index.html</code> per linkare il manifest con percorso assoluto e registrare il service worker con percorso assoluto <code>/calcolatore_40k/service-worker.js</code>.</p>
+          </ul>
       <section>
         <h2>2025-09-19 — Consolidamento PWA e asset</h2>
+          <h2>### Storico commit (ultimo snapshot)</h2>
+          <pre class="md-block">- b551482 — 2025-09-19 00:54:32 — docs(changelog): add diario di bordo con changelog e note tecniche
+   - 629c241 — 2025-09-18 01:28:18 — fix(pwa): use absolute manifest and asset paths; register SW with absolute path for GitHub Pages
+   - c4db297 — 2025-09-18 01:23:12 — chore(site): apply manual edits to index.html (restore dynamic swPath)
+   - 71aa05e — 2025-09-18 01:19:04 — fix(pwa): register service worker with absolute path matching manifest scope
+   - e338cd7 — 2025-09-18 01:15:59 — docs(pwa): add reinstall and troubleshooting guide for manifest/service worker
+   - ... (vedi git log per la storia completa)</pre>
+        </section>
         <ul>
-        <ol class="commit-list">
-          <li><strong>Utente:</strong> "Voglio costruire un app web utilizzabile da git page. iniziamo a fare lo scaffolding" — <strong>Assistente:</strong> Ho creato lo scaffolding base (index, assets, manifest, SW, README, docs).</li>
-          <li><strong>Utente:</strong> "Aggiungi changelog" — <strong>Assistente:</strong> Creato questa pagina `changelog.html` e aggiunto anche stile dedicato.</li>
-        </ol>
-          <li><strong>c4db297</strong> — 2025-09-18 01:23:12 — chore(site): apply manual edits to index.html (restore dynamic swPath)</li>
-          <li><strong>71aa05e</strong> — 2025-09-18 01:19:04 — fix(pwa): register service worker with absolute path matching manifest scope</li>
-          <li><strong>...</strong> — altri commit precedenti (vedi git log per la storia completa)</li>
-        </ol>
-      <section>
-        </ul>
-      </section>
-      <section>
-        <h2>2025-09-19 — Modifiche al registro locale</h2>
-        <ul>
-          <li>Registrazione dinamica del service worker (fallback) e log degli errori in caso di fallimento.</li>
-          <li>Commit con messaggi seguendo la convenzione conventional commits per tracking più chiaro.</li>
-        </ul>
-      </section>
-      <section>
-        <h2>Funzionalità del calcolatore (sintesi)</h2>
-        <ul>
-          <li>Interfaccia responsive a tre colonne con card unica e divisori verticali.</li>
-          <li>Input per attacchi, Balistic Skill (BS), Forza, AP, Danni (campo testuale: numeri, intervalli, liste, notazione Dn e formule come D6+2), Resistenza, Salvezza, Ferite e Modelli.</li>
-          <li>Opzioni reroll: <em>reroll di tutti i tiri falliti</em> e <em>reroll dei risultati 1</em> (mutualmente esclusive).</li>
+          <h2>### Prompt &amp; Risposte (sintesi)</h2>
+          <pre class="md-block">- Utente: "Voglio costruire un app web utilizzabile da git page..."
+    Assistente: scaffolding, PWA basics
+  - Utente: richiede responsive
+    Assistente: mobile-first, breakpoints
+  - Utente: calcolatore (attacchi, BS, forza, AP, danni)
+    Assistente: implementato parsing danni e probabilità
+  - Utente: reroll
+    Assistente: aggiunte checkbox e logica
+  - Utente: PWA install path issues
+    Assistente: converted manifest & SW to absolute paths, guide to reinstall
+  - Utente: changelog
+    Assistente: created changelog page and styles
+  </pre>
           <li>Logica di calcolo: probabilità di colpire (con gestione reroll), probabilità di ferire, probabilità di non salvezza, danno medio da espressione, stima dei danni attesi, stima dei modelli eliminati (no-overkill), e probabilità di eliminare tutta l'unità (Poisson approximation).</li>
         </ul>
       </section>
