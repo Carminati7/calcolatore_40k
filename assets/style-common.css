@@ -59,9 +59,16 @@ main { min-height: 70vh; padding: 1.5rem; display: flex; flex-direction: column;
 /* Mobile: hide nav and show toggle */
 @media (max-width: 700px) {
   .nav-toggle { display:inline-block; margin-bottom:0.5rem; }
-  .main-nav { display:block; max-height:0; overflow:hidden; transition: max-height 0.22s ease; }
-  .main-nav.open { max-height: 400px; }
-  .main-nav a { display:block; padding:0.8rem 1rem; border-radius:6px; margin:0.25rem 0; }
+  /* Use transform and opacity for a smooth, performant animation */
+  .main-nav { display:block; transform-origin: top center; transform: scaleY(0); opacity: 0; pointer-events: none; will-change: transform, opacity; transition: transform 260ms cubic-bezier(.2,.9,.2,1), opacity 200ms ease; }
+  .main-nav.open { transform: scaleY(1); opacity: 1; pointer-events: auto; }
+  .main-nav a { display:block; padding:0.8rem 1rem; border-radius:6px; margin:0.25rem 0; opacity: 0; transform: translateY(-6px); transition: transform 260ms cubic-bezier(.2,.9,.2,1) 40ms, opacity 200ms ease 40ms; }
+  .main-nav.open a { opacity: 1; transform: translateY(0); }
+
+  /* Respect reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    .main-nav, .main-nav a { transition: none !important; }
+  }
 }
 
 /* Form controls (base) */
