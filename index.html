@@ -50,6 +50,16 @@
                         <label for="forza">Forza</label>
                         <input type="number" id="forza" name="forza" min="1" max="999" required>
                     </div>
+                    <div class="form-group" style="margin-top:-0.7rem;">
+                        <div class="checkbox-row">
+                            <input type="checkbox" id="rerollWoundFail" name="rerollWoundFail" class="styled-checkbox">
+                            <label for="rerollWoundFail" class="styled-checkbox-label">Permetti reroll di tutti i tiri per ferire falliti</label>
+                        </div>
+                        <div class="checkbox-row">
+                            <input type="checkbox" id="rerollWound1" name="rerollWound1" class="styled-checkbox">
+                            <label for="rerollWound1" class="styled-checkbox-label">Permetti reroll dei risultati 1 per ferire</label>
+                        </div>
+                    </div>
                     <div class="form-group">
                         <label for="penetrazione">Penetrazione armatura (AP)</label>
                         <input type="number" id="penetrazione" name="penetrazione" min="0" max="999" required>
@@ -95,8 +105,23 @@
             document.addEventListener('DOMContentLoaded', function() {
                 var reroll1 = document.getElementById('reroll1');
                 var rerollFail = document.getElementById('rerollFail');
+                var rerollWound1 = document.getElementById('rerollWound1');
+                var rerollWoundFail = document.getElementById('rerollWoundFail');
+                
                 reroll1.addEventListener('change', function() {
                     if (reroll1.checked) rerollFail.checked = false;
+                });
+                
+                rerollFail.addEventListener('change', function() {
+                    if (rerollFail.checked) reroll1.checked = false;
+                });
+
+                rerollWound1.addEventListener('change', function() {
+                    if (rerollWound1.checked) rerollWoundFail.checked = false;
+                });
+
+                rerollWoundFail.addEventListener('change', function() {
+                    if (rerollWoundFail.checked) rerollWound1.checked = false;
                 });
                 rerollFail.addEventListener('change', function() {
                     if (rerollFail.checked) reroll1.checked = false;

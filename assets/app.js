@@ -60,7 +60,7 @@ function calcolaProbColpire(balistic, reroll1 = false, rerollFail = false) {
 }
 
 // Calcola la probabilità di ferire in base a forza e resistenza
-function calcolaProbFerire(forza, resistenza) {
+function calcolaProbFerire(forza, resistenza, rerollWound1 = false, rerollWoundFail = false) {
     let soglia;
     if (forza >= 2 * resistenza) {
         soglia = 2;
@@ -73,7 +73,18 @@ function calcolaProbFerire(forza, resistenza) {
     } else {
         soglia = 5;
     }
-    return (7 - soglia) / 6;
+    
+    const base = (7 - soglia) / 6;
+    
+    if (rerollWoundFail) {
+        // Probabilità di ferire con reroll di tutti i falliti: base + (1-base)*base
+        return base + (1 - base) * base;
+    }
+    if (rerollWound1) {
+        // Probabilità di ferire con reroll dei 1: base + (1/6) * base
+        return base + (1/6) * base;
+    }
+    return base;
 }
 
 // Calcola la probabilità che la salvezza avversaria non annulli il colpo
@@ -120,8 +131,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // Raccolta dati e validazione
         const attacchi = parseInt(form.attacchi.value, 10);
         const balistic = parseInt(form.balistic.value, 10);
-    const reroll1 = form.reroll1 && form.reroll1.checked;
-    const rerollFail = form.rerollFail && form.rerollFail.checked;
+        const reroll1 = form.reroll1 && form.reroll1.checked;
+        const rerollFail = form.rerollFail && form.rerollFail.checked;
+        const rerollWound1 = form.rerollWound1 && form.rerollWound1.checked;
+        const rerollWoundFail = form.rerollWoundFail && form.rerollWoundFail.checked;
         const forza = parseInt(form.forza.value, 10);
         const resistenza = parseInt(form.resistenza.value, 10);
         const penetrazione = parseInt(form.penetrazione.value, 10);
@@ -132,8 +145,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const modelliTotali = parseInt(form.modelli.value, 10);
 
         // Calcoli di probabilità
-    const probColpire = calcolaProbColpire(balistic, reroll1, rerollFail);
-        const probFerire = calcolaProbFerire(forza, resistenza);
+        const probColpire = calcolaProbColpire(balistic, reroll1, rerollFail);
+        const probFerire = calcolaProbFerire(forza, resistenza, rerollWound1, rerollWoundFail);
         const probNonSalvato = calcolaProbNonSalvato(salvezza, penetrazione);
         const probColpoValido = probColpire * probFerire * probNonSalvato;
 
