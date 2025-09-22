@@ -43,24 +43,43 @@ function fattoriale(n) {
     return res;
 }
 
-// Calcola la probabilità di colpire in base alla balistic skill
+// Calcola la probabilità di colpire in base alla balistic skill e gestisce Sustained Hits
 // reroll1: reroll dei risultati 1
 // rerollFail: reroll di tutti i falliti
-function calcolaProbColpire(balistic, reroll1 = false, rerollFail = false) {
+// sustainedHits: numero di colpi extra per ogni 6 ottenuto
+function calcolaProbColpire(balistic, reroll1 = false, rerollFail = false, sustainedHits = 0) {
     const base = (7 - balistic) / 6;
+    let probBase;
+    
     if (rerollFail) {
         // Probabilità di colpire con reroll di tutti i falliti: base + (1-base)*base
-        return base + (1 - base) * base;
-    }
-    if (reroll1) {
+        probBase = base + (1 - base) * base;
+    } else if (reroll1) {
         // Probabilità di colpire con reroll dei 1: base + (1/6) * base
-        return base + (1/6) * base;
+        probBase = base + (1/6) * base;
+    } else {
+        probBase = base;
     }
-    return base;
+    
+    // Se sustainedHits è attivo, calcola la probabilità extra considerando i 6
+    if (sustainedHits > 0) {
+        // Probabilità di ottenere un 6 (1/6)
+        const probSix = 1/6;
+        // Ogni 6 genera sustainedHits colpi extra
+        const extraHits = probSix * sustainedHits;
+        return probBase + extraHits;
+    }
+    
+    return probBase;
 }
 
 // Calcola la probabilità di ferire in base a forza e resistenza
-function calcolaProbFerire(forza, resistenza, rerollWound1 = false, rerollWoundFail = false) {
+function calcolaProbFerire(forza, resistenza, rerollWound1 = false, rerollWoundFail = false, lethalHits = false, isLethalHit = false) {
+    // Se è un Lethal Hit (da un 6 per colpire) e Lethal Hits è attivo, ferita automatica
+    if (lethalHits && isLethalHit) {
+        return 1;
+    }
+
     let soglia;
     if (forza >= 2 * resistenza) {
         soglia = 2;
@@ -131,6 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Raccolta dati e validazione
         const attacchi = parseInt(form.attacchi.value, 10);
         const balistic = parseInt(form.balistic.value, 10);
+        const sustainedHits = parseInt(form.sustainedHits.value, 10);
         const reroll1 = form.reroll1 && form.reroll1.checked;
         const rerollFail = form.rerollFail && form.rerollFail.checked;
         const rerollWound1 = form.rerollWound1 && form.rerollWound1.checked;
@@ -145,16 +165,27 @@ document.addEventListener('DOMContentLoaded', () => {
         const modelliTotali = parseInt(form.modelli.value, 10);
 
         // Calcoli di probabilità
-        const probColpire = calcolaProbColpire(balistic, reroll1, rerollFail);
-        const probFerire = calcolaProbFerire(forza, resistenza, rerollWound1, rerollWoundFail);
+        const lethalHits = form.lethalHits && form.lethalHits.checked;
+        
+        // Probabilità di colpire con un 6
+        const probSix = 1/6;
+        // Probabilità di colpire con risultati non-6
+        const probNormalHit = calcolaProbColpire(balistic, reroll1, rerollFail, sustainedHits) - (lethalHits ? probSix : 0);
+        
+        // Calcola probabilità separate per colpi normali e Lethal Hits
+        const probFerireNormal = calcolaProbFerire(forza, resistenza, rerollWound1, rerollWoundFail, lethalHits, false);
+        const probFerireLethal = lethalHits ? calcolaProbFerire(forza, resistenza, rerollWound1, rerollWoundFail, lethalHits, true) : 0;
+        
         const probNonSalvato = calcolaProbNonSalvato(salvezza, penetrazione);
-        const probColpoValido = probColpire * probFerire * probNonSalvato;
+        
+        // Combina le probabilità: (prob colpo normale * prob ferire normale + prob colpo 6 * prob ferire lethal) * prob non salvato
+        const probColpoValido = (probNormalHit * probFerireNormal + (lethalHits ? probSix * probFerireLethal : 0)) * probNonSalvato;
 
         // Stime
         const modelliEliminati = stimaModelliEliminati(attacchi, probColpoValido, danni, ferite);
         const percentuale = (modelliTotali > 0) ? Math.min(100, (modelliEliminati / modelliTotali) * 100) : 0;
         const probTuttiEliminati = stimaProbTuttiEliminati(attacchi, probColpoValido, danni, modelliTotali, ferite);
-        const attacchiStimati = stimaDanniAttesi(attacchi, probColpire, probFerire, probNonSalvato, danni);
+        const attacchiStimati = attacchi * probColpoValido * danni;
 
         // Output
         risultato.innerHTML = `Valore stimato danni inflitti: <strong>${attacchiStimati.toFixed(2)}</strong><br>Modelli eliminati: <strong>${modelliEliminati.toFixed(2)}</strong><br>Percentuale unità eliminata: <strong>${percentuale.toFixed(1)}%</strong><br>Probabilità di eliminare tutti i modelli: <strong>${(probTuttiEliminati * 100).toFixed(1)}%</strong>`;
